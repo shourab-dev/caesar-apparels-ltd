@@ -154,6 +154,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .menu-open .site-header { color: #fff; background: transparent; box-shadow: none; backdrop-filter: none; }
 .menu-open .site-header .brand-mark img { filter: brightness(0) invert(1); }
 
+/* Header sits on a light hero (About, Contact), so it starts dark */
+.page-light .site-header:not(.is-solid) { color: var(--ink); }
+.page-light .site-header:not(.is-solid) .brand-mark img { filter: none; }
+.page-light .site-header:not(.is-solid) .header-cta { border-color: var(--ink); color: var(--ink); }
+.page-light .site-header:not(.is-solid) .header-cta:hover { background: var(--ink); color: #fff; }
+.page-light.menu-open .site-header { color: #fff; }
+.nav a[aria-current="page"]::after { transform: scaleX(1); }
+
 /* ---------- Hero ---------- */
 .hero {
   position: relative;

@@ -2,13 +2,6 @@
    Caesar Apparels Ltd — About page (extends style.css)
    ========================================================== */
 
-/* Header sits on a light hero here, so it starts dark */
-.page-about .site-header:not(.is-solid) { color: var(--ink); }
-.page-about .site-header:not(.is-solid) .brand-mark img { filter: none; }
-.page-about .site-header:not(.is-solid) .header-cta { border-color: var(--ink); color: var(--ink); }
-.page-about .site-header:not(.is-solid) .header-cta:hover { background: var(--ink); color: #fff; }
-.page-about.menu-open .site-header { color: #fff; }
-.nav a[aria-current="page"]::after { transform: scaleX(1); }
 
 .ab-section-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; margin-bottom: clamp(40px, 5vw, 72px); }
 .ab-section-head .body { font-size: 15px; max-width: 36ch; }
