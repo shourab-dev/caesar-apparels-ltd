@@ -93,9 +93,33 @@
       .join(" ");
   });
 
+  /* ---------- Capacity: final state (animated later unless reduced motion) ---------- */
+  const odoStrips = $$(".odo-digit");
+  const odoTarget = (d) => -(10 + +d.dataset.digit) * 5; // strip holds 0-9 twice; each digit is 5% of it
+  odoStrips.forEach((d) => gsap.set($(".odo-strip", d), { yPercent: odoTarget(d) }));
+  const capCounts = $$("[data-cap-count]");
+  const fmt = (n) => Math.round(n).toLocaleString("en-US");
+  capCounts.forEach((el) => (el.textContent = fmt(+el.dataset.capCount)));
+
+  // Linked hover between bar segments and legend
+  const stack = $(".stack");
+  if (stack) {
+    const parts = $$("[data-seg]", stack);
+    parts.forEach((el) => {
+      el.addEventListener("pointerenter", () => {
+        stack.classList.add("is-focus");
+        parts.forEach((p) => p.classList.toggle("is-active", p.dataset.seg === el.dataset.seg));
+      });
+      el.addEventListener("pointerleave", () => {
+        stack.classList.remove("is-focus");
+        parts.forEach((p) => p.classList.remove("is-active"));
+      });
+    });
+  }
+
   /* ---------- Hero slider ---------- */
   const slides = $$(".hero-slide");
-  const captions = ["Stitching line, Chattogram", "Production floor", "Denim finishing", "Outbound from Chattogram port"];
+  const captions = ["Stitching line, Chittagong", "Production floor", "Denim finishing", "Outbound from Chittagong port"];
   const currentEl = $("[data-hero-current]");
   const captionEl = $("[data-hero-caption]");
   const bar = $("[data-hero-bar]");
@@ -265,7 +289,6 @@
     originals.forEach((li) => {
       const clone = li.cloneNode(true);
       clone.setAttribute("aria-hidden", "true");
-      $("img", clone).alt = "";
       track.appendChild(clone);
     });
     const m = { row, track, count: originals.length, dir: row.dataset.marquee === "right" ? 1 : -1, hover: false, sign: 1, tween: null };
@@ -374,13 +397,77 @@
     scale: 1, ease: "none",
     scrollTrigger: { trigger: ".sustain-feature", start: "top bottom", end: "bottom top", scrub: true },
   });
-  gsap.from(".pillars li", {
-    opacity: 0, x: 30, duration: 1, stagger: 0.1, ease: "expo.out",
-    scrollTrigger: { trigger: ".pillars", start: "top 85%" },
+  /* ---------- Capacity ---------- */
+  const capacity = $("[data-capacity]");
+  const capTl = gsap.timeline({ paused: true, defaults: { ease: "expo.out" } });
+  odoStrips.forEach((d, i) => {
+    capTl.fromTo($(".odo-strip", d), { yPercent: 0 }, { yPercent: odoTarget(d), duration: 2 + i * 0.18, ease: "expo.inOut" }, i * 0.06);
+  });
+  capTl
+    .fromTo(".odo-sep", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8 }, 0.4)
+    .fromTo(".odo-unit", { opacity: 0, x: -24 }, { opacity: 1, x: 0, duration: 1.2 }, 1.2)
+    .fromTo(".stitch", { scaleX: 0, transformOrigin: "left" }, { scaleX: 1, duration: 1.6, ease: "power3.inOut" }, 0.6);
+  $$(".seg-fill").forEach((seg, i) => {
+    capTl.fromTo(seg, { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power4.inOut" }, 1.1 + i * 0.35);
+  });
+  $$(".legend-item").forEach((item, i) => {
+    const num = $("[data-cap-count]", item);
+    const obj = { v: 0 };
+    capTl
+      .fromTo(item, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1 }, 1.35 + i * 0.35)
+      .to(obj, { v: +num.dataset.capCount, duration: 1.2, ease: "power2.out", onUpdate: () => (num.textContent = fmt(obj.v)) }, 1.35 + i * 0.35);
+  });
+  $$(".capacity-facts .fact").forEach((fact, i) => {
+    capTl.fromTo(fact, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.1 }, 2.4 + i * 0.12);
+  });
+  $$(".capacity-facts [data-cap-count]").forEach((num) => {
+    const obj = { v: 0 };
+    capTl.to(obj, { v: +num.dataset.capCount, duration: 1.8, ease: "power3.out", onUpdate: () => (num.textContent = fmt(obj.v)) }, 2.4);
+  });
+  capTl.add(startLiveTicker, 2.8);
+  ScrollTrigger.create({ trigger: capacity, start: "top 65%", once: true, onEnter: () => capTl.play() });
+
+  // Running stitches along the bar
+  gsap.to(".stitch line", { strokeDashoffset: -180, duration: 3, ease: "none", repeat: -1 });
+
+  // Subtle drift of the big number while scrolling past
+  gsap.fromTo(".odo-num", { xPercent: 2 }, {
+    xPercent: -3, ease: "none",
+    scrollTrigger: { trigger: capacity, start: "top bottom", end: "bottom top", scrub: true },
+  });
+
+  // Live ticker: garments made since the page opened, at full monthly capacity
+  const PER_SECOND = 550000 / (30 * 24 * 60 * 60); // ≈ 0.212 pieces/s ≈ 12.7 per minute
+  const PERIOD = 1 / PER_SECOND;
+  const pageStart = performance.now();
+  const liveNum = $("[data-live-count]");
+  function startLiveTicker() {
+    const update = () => {
+      liveNum.textContent = fmt(Math.floor(((performance.now() - pageStart) / 1000) * PER_SECOND));
+      gsap.fromTo(liveNum, { scale: 1.3, transformOrigin: "left bottom" }, { scale: 1, duration: 0.6, ease: "back.out(3)" });
+    };
+    update();
+    const elapsed = ((performance.now() - pageStart) / 1000) % PERIOD;
+    gsap.fromTo("[data-live-arc]", { strokeDashoffset: 125.66 }, {
+      strokeDashoffset: 0, duration: PERIOD, ease: "none", repeat: -1, onRepeat: update,
+    }).progress(elapsed / PERIOD);
+  }
+
+  // Cursor glow
+  if (window.matchMedia("(hover: hover)").matches) {
+    capacity.addEventListener("pointermove", (e) => {
+      const r = capacity.getBoundingClientRect();
+      gsap.to(capacity, { "--mx": `${e.clientX - r.left}px`, "--my": `${e.clientY - r.top}px`, duration: 0.8, ease: "power3.out", overwrite: "auto" });
+    });
+  }
+
+  gsap.from(".fabrics-list li", {
+    opacity: 0, y: 14, duration: 0.7, stagger: 0.06, ease: "power3.out",
+    scrollTrigger: { trigger: ".fabrics", start: "top 92%" },
   });
   gsap.from(".certs-list li", {
-    opacity: 0, scale: 0.9, duration: 0.8, stagger: 0.07, ease: "back.out(1.6)",
-    scrollTrigger: { trigger: ".certs", start: "top 85%" },
+    opacity: 0, y: 40, duration: 1, stagger: 0.07, ease: "expo.out",
+    scrollTrigger: { trigger: ".certs-list", start: "top 88%" },
   });
 
   /* ---------- Global reach: draw routes ---------- */
