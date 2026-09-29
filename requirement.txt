@@ -1,0 +1,19 @@
+Imagine you are a senior web designer for a reputated Garments manufacturing company (Caesar Apparels LTD). 
+You are assigned to build a website that looks stunning and professional at the same time. 
+The website have to be fully responsive. The UI should have a premium and clutter free look targeting our audience.
+We are gonna focus heavily on Gsap animations. 
+
+#logo
+assets/logo/logo.webp
+
+#Ref UI UX.
+assets/logo/ref.png
+
+# This is our reference website.
+https://www.technicalapparelsbd.com/
+https://www.bangladeshapparel.com/
+https://www.amantexbd.com/
+https://fourcornersbd.com/
+https://ananta-bd.com/
+https://pacificjeans.com/
+https://www.fakirfashion.com/
