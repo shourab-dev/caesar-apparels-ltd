@@ -437,7 +437,19 @@
         start: "left right", end: "right 60%", scrub: true,
       },
     });
-    gsap.from([$("h3", step), $("p", step), $(".step-num", step)], {
+  });
+
+  // Step text: steps already on screen when the section pins reveal as the section arrives;
+  // the rest reveal as they slide in. (A container trigger never fires for steps that start past it.)
+  const inViewAtStart = (step) => step.getBoundingClientRect().left - list.getBoundingClientRect().left + track.getBoundingClientRect().left < window.innerWidth * 0.85;
+  const stepText = (step) => [$(".step-num", step), $("h3", step), $("p", step)];
+  const firstSteps = steps.filter(inViewAtStart);
+  gsap.from(firstSteps.flatMap(stepText), {
+    opacity: 0, y: 24, duration: 0.8, stagger: 0.06, ease: "power3.out",
+    scrollTrigger: { trigger: "[data-process]", start: "top 60%", refreshPriority: -1 },
+  });
+  steps.filter((s) => !firstSteps.includes(s)).forEach((step) => {
+    gsap.from(stepText(step), {
       opacity: 0, y: 24, duration: 0.8, stagger: 0.08, ease: "power3.out",
       scrollTrigger: { trigger: step, containerAnimation: processTween, start: "left 85%" },
     });
