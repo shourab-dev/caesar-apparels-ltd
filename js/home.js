@@ -113,11 +113,193 @@
       .fromTo(".hero-lede", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.2 }, 1.45)
       .fromTo(".hero-actions", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.2 }, 1.6)
       .fromTo(".hero-controls", { opacity: 0 }, { opacity: 1, duration: 1 }, 1.8)
-      .fromTo(header, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1 }, 1.6)
+      .fromTo(header, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1, clearProps: "transform" }, 1.6)
       .add(runBar, 1.8);
   }
 
+  /* ---------- Certificates: auto-sliding carousel, drag, dialog (works with or without motion) ---------- */
+  const certTrack = $("[data-cert-track]");
+  const certItems = $$(".cert", certTrack);
+  const certDotsEl = $("[data-cert-dots]");
+  const CERT_DELAY = 4; // seconds each slide stays before auto-advancing
+  const certStep = () => certItems[0].getBoundingClientRect().width + parseFloat(getComputedStyle(certTrack).columnGap || 0);
+  const certLast = () => Math.max(0, Math.round((certTrack.scrollWidth - certTrack.clientWidth) / certStep()));
+  let certIndex = 0;
+  let certDots = [];
+  let certTimer = null;
+  const certPause = new Set(reduceMotion ? ["reduced-motion"] : []); // reasons autoplay is paused
+
+  function buildCertDots() {
+    const n = certLast() + 1;
+    if (certDots.length !== n) {
+      certDotsEl.innerHTML = Array.from({ length: n }, (_, i) =>
+        `<button type="button" class="cert-dot" aria-label="Go to slide ${i + 1} of ${n}"><span class="cert-dot-fill"></span></button>`).join("");
+      certDots = $$(".cert-dot", certDotsEl);
+      certDots.forEach((d, i) => d.addEventListener("click", () => goToCert(i)));
+    }
+    certIndex = Math.min(certIndex, n - 1);
+    markCertDot();
+  }
+  function markCertDot() {
+    certDots.forEach((d, i) => {
+      d.setAttribute("aria-current", String(i === certIndex));
+      gsap.set($(".cert-dot-fill", d), { clearProps: "transform" });
+    });
+  }
+  function restartCertTimer() {
+    certTimer && certTimer.kill();
+    certTimer = null;
+    const fill = certDots[certIndex] && $(".cert-dot-fill", certDots[certIndex]);
+    if (!fill || certPause.has("reduced-motion")) return;
+    // The active dot fills up while the slide is shown, then the slider advances.
+    certTimer = gsap.fromTo(fill, { scaleX: 0 }, { scaleX: 1, duration: CERT_DELAY, ease: "none", onComplete: () => goToCert(certIndex + 1) });
+    if (certPause.size) certTimer.pause();
+  }
+  function goToCert(i) {
+    const last = certLast();
+    certIndex = i > last ? 0 : i < 0 ? last : i; // wrap around at both ends
+    certTrack.scrollTo({ left: certIndex * certStep(), behavior: reduceMotion ? "auto" : "smooth" });
+    markCertDot();
+    restartCertTimer();
+  }
+  function setCertPause(reason, on) {
+    on ? certPause.add(reason) : certPause.delete(reason);
+    if (!certTimer) return;
+    certPause.size ? certTimer.pause() : certTimer.resume();
+  }
+
+  $("[data-cert-prev]").addEventListener("click", () => goToCert(certIndex - 1));
+  $("[data-cert-next]").addEventListener("click", () => goToCert(certIndex + 1));
+
+  // Keep the active dot in sync when the row is swiped or dragged
+  let certScrollEnd;
+  certTrack.addEventListener("scroll", () => {
+    clearTimeout(certScrollEnd);
+    certScrollEnd = setTimeout(() => {
+      const i = Math.min(certLast(), Math.round(certTrack.scrollLeft / certStep()));
+      if (i !== certIndex) { certIndex = i; markCertDot(); restartCertTimer(); }
+    }, 140);
+  }, { passive: true });
+
+  // Pause while the cards or controls are hovered, keyboard-focused, or off-screen
+  const certSection = $(".certificates");
+  [certTrack, $(".cert-controls")].forEach((el) => {
+    el.addEventListener("pointerenter", () => setCertPause("hover", true));
+    el.addEventListener("pointerleave", () => setCertPause("hover", false));
+  });
+  certSection.addEventListener("focusin", (e) => setCertPause("focus", e.target.matches(":focus-visible")));
+  certSection.addEventListener("focusout", () => setCertPause("focus", false));
+  setCertPause("offscreen", true);
+  new IntersectionObserver(([entry]) => setCertPause("offscreen", !entry.isIntersecting), { threshold: 0.25 }).observe(certSection);
+
+  let certResize;
+  window.addEventListener("resize", () => {
+    clearTimeout(certResize);
+    certResize = setTimeout(() => { buildCertDots(); goToCert(certIndex); }, 200);
+  });
+  buildCertDots();
+  restartCertTimer();
+
+  // Drag to scroll with a mouse (touch already scrolls natively)
+  let drag = null;
+  let dragged = false;
+  certTrack.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    drag = { x: e.clientX, left: certTrack.scrollLeft };
+    dragged = false;
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    const dx = e.clientX - drag.x;
+    if (!dragged && Math.abs(dx) > 5) { dragged = true; certTrack.classList.add("is-dragging"); setCertPause("drag", true); }
+    if (dragged) certTrack.scrollLeft = drag.left - dx;
+  });
+  window.addEventListener("pointerup", () => {
+    if (!drag) return;
+    drag = null;
+    if (!dragged) return;
+    certTrack.classList.remove("is-dragging");
+    setCertPause("drag", false);
+    goToCert(Math.round(certTrack.scrollLeft / certStep())); // settle on the nearest card
+    setTimeout(() => (dragged = false), 0);
+  });
+
+  const certDlg = $("[data-cert-dlg]");
+  const certDlgCard = $(".cert-dlg-card", certDlg);
+  const D = (k) => $(`[data-cert-dlg-${k}]`, certDlg);
+  function openCert(item) {
+    const file = item.dataset.file;
+    const titleEl = $(".cert-title", item);
+    const plain = titleEl.textContent.trim();
+    const media = D("media");
+    media.innerHTML = "";
+    if (file) {
+      const img = new Image();
+      img.src = file;
+      img.alt = `${plain} certificate issued to Caesar Apparels Limited`;
+      media.appendChild(img);
+    } else {
+      const paper = $(".cert-paper", item).cloneNode(true);
+      paper.removeAttribute("style");
+      paper.setAttribute("aria-hidden", "true");
+      media.appendChild(paper);
+    }
+    D("title").innerHTML = titleEl.innerHTML;
+    D("full").textContent = $(".cert-full", item).textContent;
+    D("text").textContent = item.dataset.text;
+    D("copy").textContent = file ? "Shown here — open in full below" : "Available on request";
+    D("request").href = `contact.html?topic=compliance&cert=${encodeURIComponent(plain)}#enquiry`;
+    const fileLink = D("file");
+    fileLink.hidden = !file;
+    if (file) fileLink.href = file;
+    certDlg.showModal();
+    setCertPause("dialog", true);
+    window.CA.lenis && window.CA.lenis.stop();
+    if (!reduceMotion) {
+      gsap.fromTo(certDlgCard, { opacity: 0, y: 30, scale: 0.97 }, { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: "power3.out" });
+      gsap.fromTo(media.firstElementChild, { rotationY: -25, opacity: 0 }, { rotationY: 0, opacity: 1, duration: 0.9, ease: "expo.out", delay: 0.1, transformPerspective: 900 });
+    }
+  }
+  function closeCert() {
+    const done = () => { certDlg.close(); setCertPause("dialog", false); window.CA.lenis && window.CA.lenis.start(); };
+    if (reduceMotion) return done();
+    gsap.to(certDlgCard, { opacity: 0, y: 20, duration: 0.25, ease: "power2.in", onComplete: done });
+  }
+  certItems.forEach((item) => $(".cert-card", item).addEventListener("click", () => { if (!dragged) openCert(item); }));
+  D("close").addEventListener("click", closeCert);
+  certDlg.addEventListener("cancel", (e) => { e.preventDefault(); closeCert(); });
+  certDlg.addEventListener("click", (e) => { if (e.target === certDlg) closeCert(); });
+
   if (reduceMotion) return;
+
+  /* ---------- Certificates: deal-in and tilt ---------- */
+  gsap.from(certItems, {
+    y: 140, opacity: 0, rotation: (i) => [-9, 6, -4, 8, -7, 5, -3][i % 7], duration: 1.3, stagger: 0.08, ease: "expo.out",
+    scrollTrigger: { trigger: ".certificates", start: "top 70%", refreshPriority: -1 },
+  });
+  gsap.from(".cert-seal", {
+    rotation: -180, scale: 0.4, opacity: 0, transformOrigin: "50% 50%", duration: 1.4, stagger: 0.08, ease: "expo.out", delay: 0.3,
+    scrollTrigger: { trigger: ".certificates", start: "top 70%", refreshPriority: -1 },
+  });
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    certItems.forEach((item) => {
+      const paper = $(".cert-paper", item);
+      const rx = gsap.quickTo(paper, "rotationX", { duration: 0.5, ease: "power3" });
+      const ry = gsap.quickTo(paper, "rotationY", { duration: 0.5, ease: "power3" });
+      const lift = gsap.quickTo(paper, "y", { duration: 0.5, ease: "power3" });
+      item.addEventListener("pointermove", (e) => {
+        const r = item.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width;
+        const py = (e.clientY - r.top) / r.height;
+        ry((px - 0.5) * 16);
+        rx((0.5 - py) * 12);
+        lift(-10);
+        paper.style.setProperty("--gx", `${px * 100}%`);
+        paper.style.setProperty("--gy", `${py * 100}%`);
+      });
+      item.addEventListener("pointerleave", () => { rx(0); ry(0); lift(0); });
+    });
+  }
 
   /* ---------- Hero scroll-out parallax ---------- */
   gsap.to(".hero-content", {
@@ -333,10 +515,6 @@
   gsap.from(".fabrics-list li", {
     opacity: 0, y: 14, duration: 0.7, stagger: 0.06, ease: "power3.out",
     scrollTrigger: { trigger: ".fabrics", start: "top 92%" },
-  });
-  gsap.from(".certs-list li", {
-    opacity: 0, y: 40, duration: 1, stagger: 0.07, ease: "expo.out",
-    scrollTrigger: { trigger: ".certs-list", start: "top 88%" },
   });
 
   /* ---------- Global reach: draw routes ---------- */

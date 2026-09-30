@@ -50,7 +50,7 @@
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="#capabilities">Capabilities</a></li>
-        <li><a href="#products">Products</a></li>
+        <li><a href="products.html">Products</a></li>
         <li><a href="#sustainability">Compliance</a></li>
       </ul>
     </nav>
@@ -69,7 +69,7 @@
     <ul>
       <li><a href="about.html">About</a></li>
       <li><a href="#capabilities">Capabilities</a></li>
-      <li><a href="#products">Products</a></li>
+      <li><a href="products.html">Products</a></li>
       <li><a href="#sustainability">Compliance</a></li>
       <li><a href="#clients">Clients</a></li>
       <li><a href="contact.html">Contact</a></li>
@@ -250,35 +250,35 @@
         <p class="kicker">What we make</p>
         <h2 class="h2 split">Product categories</h2>
       </div>
-      <p class="body section-head-note">Knit and woven garments for men, women and children.</p>
+      <p class="body section-head-note">Knit and woven garments for men, women and children. <a class="text-link" href="products.html">Browse the catalogue <svg class="ic"><use href="#i-arrow"/></svg></a></p>
     </div>
   </div>
   <div class="container products-rail" data-products>
-    <a class="product" href="contact.html?topic=quote#enquiry">
+    <a class="product" href="products.html?cat=ladieswear">
       <img src="assets/images/cat-ladies.jpg" alt="" loading="lazy">
       <span class="product-name">Ladieswear</span><svg class="ic"><use href="#i-arrow"/></svg>
     </a>
-    <a class="product" href="contact.html?topic=quote#enquiry">
+    <a class="product" href="products.html?cat=menswear">
       <img src="assets/images/cat-mens.jpg" alt="" loading="lazy">
       <span class="product-name">Menswear</span><svg class="ic"><use href="#i-arrow"/></svg>
     </a>
-    <a class="product" href="contact.html?topic=quote#enquiry">
+    <a class="product" href="products.html?cat=kidswear">
       <img src="assets/images/cat-kids.jpg" alt="" loading="lazy">
       <span class="product-name">Kidswear</span><svg class="ic"><use href="#i-arrow"/></svg>
     </a>
-    <a class="product" href="contact.html?topic=quote#enquiry">
+    <a class="product" href="products.html?cat=sportswear">
       <img src="assets/images/cat-sports.jpg" alt="" loading="lazy">
       <span class="product-name">Sportswear</span><svg class="ic"><use href="#i-arrow"/></svg>
     </a>
-    <a class="product" href="contact.html?topic=quote#enquiry">
+    <a class="product" href="products.html?cat=activewear">
       <img src="assets/images/cat-active.jpg" alt="" loading="lazy">
       <span class="product-name">Activewear</span><svg class="ic"><use href="#i-arrow"/></svg>
     </a>
-    <a class="product" href="contact.html?topic=quote#enquiry">
+    <a class="product" href="products.html?cat=loungewear">
       <img src="assets/images/cat-lounge.jpg" alt="" loading="lazy">
       <span class="product-name">Loungewear</span><svg class="ic"><use href="#i-arrow"/></svg>
     </a>
-    <a class="product" href="contact.html?topic=quote#enquiry">
+    <a class="product" href="products.html?cat=shirts">
       <img src="assets/images/cat-shirts.jpg" alt="" loading="lazy">
       <span class="product-name">Casual shirts</span><svg class="ic"><use href="#i-arrow"/></svg>
     </a>
@@ -427,17 +427,185 @@
       <figure class="sustain-media reveal-img"><img src="assets/images/sustain.jpg" alt="Hands holding a young green plant in soil" loading="lazy"></figure>
     </div>
 
-    <ul class="certs-list" aria-label="Certifications">
-      <li><span class="cert-name">ACCORD</span><span class="cert-desc">Fire &amp; building safety</span></li>
-      <li><span class="cert-name">amfori BSCI</span><span class="cert-desc">Trade with purpose</span></li>
-      <li><span class="cert-name">GRS</span><span class="cert-desc">Global Recycled Standard</span></li>
-      <li><span class="cert-name">GOTS</span><span class="cert-desc">Global Organic Textile Standard</span></li>
-      <li><span class="cert-name">BCI</span><span class="cert-desc">Better Cotton Initiative</span></li>
-      <li><span class="cert-name">OEKO-TEX<sup>®</sup></span><span class="cert-desc">Standard 100</span></li>
-      <li><span class="cert-name">Higg Index</span><span class="cert-desc">Environmental &amp; social performance</span></li>
-    </ul>
   </div>
 </section>
+
+<!-- ============ Certificates ============ -->
+<!-- To show a scanned certificate, set data-file on its <li> to an image path, e.g. data-file="assets/certificates/accord.jpg". -->
+<section class="certificates" id="certificates" aria-labelledby="certificates-title">
+  <div class="container cert-head">
+    <div>
+      <p class="kicker">Certificates</p>
+      <h2 class="h2 split" id="certificates-title">Independently certified, across our facilities.</h2>
+    </div>
+    <div class="cert-head-side">
+      <p class="body">Seven recognised international standards covering safety, social compliance, materials and chemicals. Select a certificate for details or to request a copy.</p>
+    </div>
+  </div>
+  <div class="cert-viewport">
+    <ul class="cert-track" data-cert-track>
+      <li class="cert" data-cert="accord" data-file="" data-text="Certified for fire and building safety in Bangladesh — covering structural, fire and electrical safety of our facilities.">
+        <button type="button" class="cert-card" aria-haspopup="dialog" aria-label="View ACCORD certificate details">
+          <span class="cert-paper">
+            <span class="cert-top"><span>Certificate</span><span>01 / 07</span></span>
+            <svg class="cert-seal" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring-accord" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+              <circle cx="50" cy="50" r="47" class="seal-outer"/>
+              <circle cx="50" cy="50" r="29" class="seal-inner"/>
+              <g class="seal-ring"><text><textPath href="#ring-accord" textLength="228">CERTIFIED · CAESAR APPARELS LIMITED · CERTIFIED · </textPath></text></g>
+              <text x="50" y="57" text-anchor="middle" class="seal-initials">AC</text>
+            </svg>
+            <span class="cert-title">ACCORD</span>
+            <span class="cert-full">Fire &amp; building safety</span>
+            <span class="cert-rule" aria-hidden="true"></span>
+            <span class="cert-holder">Holder<b>Caesar Apparels Limited</b></span>
+            <span class="cert-glare" aria-hidden="true"></span>
+          </span>
+        </button>
+      </li>
+      <li class="cert" data-cert="bsci" data-file="" data-text="A social compliance programme for ethical supply chains: fair working conditions, worker rights and responsible business.">
+        <button type="button" class="cert-card" aria-haspopup="dialog" aria-label="View amfori BSCI certificate details">
+          <span class="cert-paper">
+            <span class="cert-top"><span>Certificate</span><span>02 / 07</span></span>
+            <svg class="cert-seal" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring-bsci" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+              <circle cx="50" cy="50" r="47" class="seal-outer"/>
+              <circle cx="50" cy="50" r="29" class="seal-inner"/>
+              <g class="seal-ring"><text><textPath href="#ring-bsci" textLength="228">CERTIFIED · CAESAR APPARELS LIMITED · CERTIFIED · </textPath></text></g>
+              <text x="50" y="57" text-anchor="middle" class="seal-initials">BS</text>
+            </svg>
+            <span class="cert-title">amfori BSCI</span>
+            <span class="cert-full">Trade with purpose</span>
+            <span class="cert-rule" aria-hidden="true"></span>
+            <span class="cert-holder">Holder<b>Caesar Apparels Limited</b></span>
+            <span class="cert-glare" aria-hidden="true"></span>
+          </span>
+        </button>
+      </li>
+      <li class="cert" data-cert="grs" data-file="" data-text="Verifies recycled content and chain of custody, together with social, environmental and chemical requirements in production.">
+        <button type="button" class="cert-card" aria-haspopup="dialog" aria-label="View GRS certificate details">
+          <span class="cert-paper">
+            <span class="cert-top"><span>Certificate</span><span>03 / 07</span></span>
+            <svg class="cert-seal" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring-grs" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+              <circle cx="50" cy="50" r="47" class="seal-outer"/>
+              <circle cx="50" cy="50" r="29" class="seal-inner"/>
+              <g class="seal-ring"><text><textPath href="#ring-grs" textLength="228">CERTIFIED · CAESAR APPARELS LIMITED · CERTIFIED · </textPath></text></g>
+              <text x="50" y="57" text-anchor="middle" class="seal-initials">GR</text>
+            </svg>
+            <span class="cert-title">GRS</span>
+            <span class="cert-full">Global Recycled Standard</span>
+            <span class="cert-rule" aria-hidden="true"></span>
+            <span class="cert-holder">Holder<b>Caesar Apparels Limited</b></span>
+            <span class="cert-glare" aria-hidden="true"></span>
+          </span>
+        </button>
+      </li>
+      <li class="cert" data-cert="gots" data-file="" data-text="The leading standard for processing textiles made from organic fibres, with environmental and social criteria throughout.">
+        <button type="button" class="cert-card" aria-haspopup="dialog" aria-label="View GOTS certificate details">
+          <span class="cert-paper">
+            <span class="cert-top"><span>Certificate</span><span>04 / 07</span></span>
+            <svg class="cert-seal" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring-gots" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+              <circle cx="50" cy="50" r="47" class="seal-outer"/>
+              <circle cx="50" cy="50" r="29" class="seal-inner"/>
+              <g class="seal-ring"><text><textPath href="#ring-gots" textLength="228">CERTIFIED · CAESAR APPARELS LIMITED · CERTIFIED · </textPath></text></g>
+              <text x="50" y="57" text-anchor="middle" class="seal-initials">GO</text>
+            </svg>
+            <span class="cert-title">GOTS</span>
+            <span class="cert-full">Global Organic Textile Standard</span>
+            <span class="cert-rule" aria-hidden="true"></span>
+            <span class="cert-holder">Holder<b>Caesar Apparels Limited</b></span>
+            <span class="cert-glare" aria-hidden="true"></span>
+          </span>
+        </button>
+      </li>
+      <li class="cert" data-cert="bci" data-file="" data-text="Supports sourcing of Better Cotton — cotton grown with better practices for farmers and the environment.">
+        <button type="button" class="cert-card" aria-haspopup="dialog" aria-label="View BCI certificate details">
+          <span class="cert-paper">
+            <span class="cert-top"><span>Certificate</span><span>05 / 07</span></span>
+            <svg class="cert-seal" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring-bci" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+              <circle cx="50" cy="50" r="47" class="seal-outer"/>
+              <circle cx="50" cy="50" r="29" class="seal-inner"/>
+              <g class="seal-ring"><text><textPath href="#ring-bci" textLength="228">CERTIFIED · CAESAR APPARELS LIMITED · CERTIFIED · </textPath></text></g>
+              <text x="50" y="57" text-anchor="middle" class="seal-initials">BC</text>
+            </svg>
+            <span class="cert-title">BCI</span>
+            <span class="cert-full">Better Cotton Initiative</span>
+            <span class="cert-rule" aria-hidden="true"></span>
+            <span class="cert-holder">Holder<b>Caesar Apparels Limited</b></span>
+            <span class="cert-glare" aria-hidden="true"></span>
+          </span>
+        </button>
+      </li>
+      <li class="cert" data-cert="oekotex" data-file="" data-text="Textiles tested for harmful substances, so every component of the garment meets strict human-ecological requirements.">
+        <button type="button" class="cert-card" aria-haspopup="dialog" aria-label="View OEKO-TEX® certificate details">
+          <span class="cert-paper">
+            <span class="cert-top"><span>Certificate</span><span>06 / 07</span></span>
+            <svg class="cert-seal" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring-oekotex" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+              <circle cx="50" cy="50" r="47" class="seal-outer"/>
+              <circle cx="50" cy="50" r="29" class="seal-inner"/>
+              <g class="seal-ring"><text><textPath href="#ring-oekotex" textLength="228">CERTIFIED · CAESAR APPARELS LIMITED · CERTIFIED · </textPath></text></g>
+              <text x="50" y="57" text-anchor="middle" class="seal-initials">OT</text>
+            </svg>
+            <span class="cert-title">OEKO-TEX<sup>®</sup></span>
+            <span class="cert-full">Standard 100</span>
+            <span class="cert-rule" aria-hidden="true"></span>
+            <span class="cert-holder">Holder<b>Caesar Apparels Limited</b></span>
+            <span class="cert-glare" aria-hidden="true"></span>
+          </span>
+        </button>
+      </li>
+      <li class="cert" data-cert="higg" data-file="" data-text="A suite of tools that measures and reports the environmental and social performance of our facilities.">
+        <button type="button" class="cert-card" aria-haspopup="dialog" aria-label="View Higg Index certificate details">
+          <span class="cert-paper">
+            <span class="cert-top"><span>Certificate</span><span>07 / 07</span></span>
+            <svg class="cert-seal" viewBox="0 0 100 100" aria-hidden="true">
+              <defs><path id="ring-higg" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0"/></defs>
+              <circle cx="50" cy="50" r="47" class="seal-outer"/>
+              <circle cx="50" cy="50" r="29" class="seal-inner"/>
+              <g class="seal-ring"><text><textPath href="#ring-higg" textLength="228">CERTIFIED · CAESAR APPARELS LIMITED · CERTIFIED · </textPath></text></g>
+              <text x="50" y="57" text-anchor="middle" class="seal-initials">HI</text>
+            </svg>
+            <span class="cert-title">Higg Index</span>
+            <span class="cert-full">Environmental &amp; social performance</span>
+            <span class="cert-rule" aria-hidden="true"></span>
+            <span class="cert-holder">Holder<b>Caesar Apparels Limited</b></span>
+            <span class="cert-glare" aria-hidden="true"></span>
+          </span>
+        </button>
+      </li>
+    </ul>
+  </div>
+  <div class="container cert-controls" aria-label="Certificate slider controls" role="group">
+    <button type="button" class="round-btn" data-cert-prev aria-label="Previous certificate"><svg class="ic"><use href="#i-arrow-l"/></svg></button>
+    <div class="cert-dots" data-cert-dots></div>
+    <button type="button" class="round-btn" data-cert-next aria-label="Next certificate"><svg class="ic"><use href="#i-arrow"/></svg></button>
+  </div>
+</section>
+
+<dialog class="cert-dlg" aria-labelledby="cert-dlg-title" data-cert-dlg>
+  <div class="cert-dlg-card">
+    <div class="cert-dlg-media" data-cert-dlg-media></div>
+    <div class="cert-dlg-body">
+      <p class="kicker">Certificate</p>
+      <h3 class="cert-dlg-title" id="cert-dlg-title" data-cert-dlg-title></h3>
+      <p class="cert-dlg-full" data-cert-dlg-full></p>
+      <p class="cert-dlg-text" data-cert-dlg-text></p>
+      <dl class="cert-dlg-specs">
+        <div><dt>Holder</dt><dd>Caesar Apparels Limited</dd></div>
+        <div><dt>Certificate copy</dt><dd data-cert-dlg-copy>Available on request</dd></div>
+      </dl>
+      <div class="cert-dlg-actions">
+        <a class="btn btn-primary" data-cert-dlg-request href="contact.html?topic=compliance#enquiry">Request a copy <svg class="ic"><use href="#i-arrow"/></svg></a>
+        <a class="text-link" data-cert-dlg-file href="#" target="_blank" rel="noopener" hidden>Open full certificate <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <button type="button" class="cert-dlg-close" data-cert-dlg-close aria-label="Close"><span></span><span></span></button>
+  </div>
+</dialog>
 
 <!-- ============ Global reach ============ -->
 <section class="reach" id="reach">
@@ -539,11 +707,11 @@
     </div>
     <nav class="footer-col" aria-label="Company">
       <h3>Company</h3>
-      <ul><li><a href="about.html">About</a></li><li><a href="#capabilities">What we do</a></li><li><a href="#products">Products</a></li><li><a href="#capacity">Capacity</a></li></ul>
+      <ul><li><a href="about.html">About</a></li><li><a href="#capabilities">What we do</a></li><li><a href="products.html">Products</a></li><li><a href="#capacity">Capacity</a></li></ul>
     </nav>
     <nav class="footer-col" aria-label="More">
       <h3>More</h3>
-      <ul><li><a href="#sustainability">Certifications</a></li><li><a href="#clients">Buyers</a></li><li><a href="#reach">Markets</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <ul><li><a href="#certificates">Certifications</a></li><li><a href="#clients">Buyers</a></li><li><a href="#reach">Markets</a></li><li><a href="contact.html">Contact</a></li></ul>
     </nav>
     <div class="footer-col footer-contact">
       <h3>Contact</h3>

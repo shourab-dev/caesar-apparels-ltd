@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Product Catalogue — Caesar Apparels</title>
+  <meta name="description" content="Browse the Caesar Apparels product catalogue: ladieswear, menswear, kidswear, sportswear, activewear, loungewear and casual shirts, with the fabrics we work with.">
+  <link rel="icon" href="assets/logo/fab.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/catalog.css">
+  <script>document.documentElement.classList.add("js")</script>
+</head>
+<body class="page-catalog page-light">
+
+<!-- Icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-arrow-l" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-award" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="8" y="4" width="16" height="24" rx="2"/><path d="M12 4v6l4-2 4 2V4M12 18h8M12 22h5"/></g></symbol>
+    <symbol id="i-globe" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="16" r="12"/><path d="M4 16h24M16 4c4 4 5 8 5 12s-1 8-5 12M16 4c-4 4-5 8-5 12s1 8 5 12"/></g></symbol>
+    <symbol id="i-ship" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M3 20h26l-3 6H6z"/><path d="M7 20v-6h18v6M11 14V9h10v5M14 9V5h4v4"/></g></symbol>
+    <symbol id="i-people" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="11" r="4.5"/><path d="M3.5 26c.8-4.6 4.2-7.5 8.5-7.5s7.7 2.9 8.5 7.5z"/><circle cx="22" cy="10" r="3.5"/><path d="M22 17c3.6 0 6 2.4 6.5 6"/></g></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path d="M13 2 5 14h6l-1 8 8-12h-6z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-cycle" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 0 1-13.7 5.6M4 12a8 8 0 0 1 13.7-5.6"/><path d="M18 3v4h-4M6 21v-4h4"/></g></symbol>
+    <symbol id="i-thread" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="8"/><path d="M6 8c4 1 8 1 12 0M5 13c5 1.5 9 1.5 14 0M7 17.5c3.5 1 6.5 1 10 0"/></g></symbol>
+    <symbol id="i-hand" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="7" r="3"/><circle cx="16.5" cy="8" r="2.5"/><path d="M3 20c.5-4 2.5-6 5-6s4.5 2 5 6M13.5 14.5c1-1 2-1.5 3-1.5 2.2 0 4 1.8 4.5 5"/></g></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/></g></symbol>
+    <symbol id="i-machine" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 26h24M6 26v-4h20v4M8 22V9a3 3 0 0 1 3-3h13a3 3 0 0 1 3 3v4h-6v9"/><path d="M11 12h6M24 17v3"/></g></symbol>
+    <symbol id="i-box" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 10 16 4l12 6v12l-12 6-12-6z"/><path d="M4 10l12 6 12-6M16 16v12"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></g></symbol>
+  </defs>
+</svg>
+
+<a class="skip" href="index.html#main">Skip to content</a>
+
+<!-- ============ Header ============ -->
+<header class="site-header" data-header>
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="Caesar Apparels Ltd, home">
+      <span class="brand-mark"><img src="assets/logo/logo.webp" alt="" width="1320" height="1095"></span>
+      <span class="brand-name">Caesar Apparels Ltd</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="index.html#capabilities">Capabilities</a></li>
+        <li><a href="products.html" aria-current="page">Products</a></li>
+        <li><a href="index.html#sustainability">Compliance</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn-ghost header-cta" href="contact.html">Contact us</a>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" data-menu-toggle>
+      <span class="sr-only">Open menu</span>
+      <span class="menu-lines" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+  <nav aria-label="Mobile">
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="index.html#capabilities">Capabilities</a></li>
+      <li><a href="products.html" aria-current="page">Products</a></li>
+      <li><a href="index.html#sustainability">Compliance</a></li>
+      <li><a href="index.html#clients">Clients</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <p class="mobile-menu-foot">Chittagong, Bangladesh<br><a href="mailto:info@caesargroup.com">info@caesargroup.com</a></p>
+</div>
+
+<main id="main">
+
+<!-- ============ Catalogue header ============ -->
+<section class="cat-hero" id="top" data-intro>
+  <div class="container cat-hero-grid">
+    <div>
+      <p class="kicker">Product catalogue</p>
+      <h1 class="cat-title">Styles we make.</h1>
+    </div>
+    <div class="cat-hero-side">
+      <p class="cat-lede">A selection of knit and woven styles for men, women and children. Every style can be developed in your fabric, fit and trims.</p>
+      <ul class="cat-facts" aria-label="Catalogue at a glance">
+        <li><b data-fact="styles">0</b> styles</li>
+        <li><b data-fact="categories">0</b> categories</li>
+        <li><b data-fact="fabrics">0</b> fabric families</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Filter bar ============ -->
+<div class="cat-bar" data-bar>
+  <div class="container cat-bar-inner">
+    <div class="cat-chips" role="group" aria-label="Filter by category" data-chips></div>
+    <div class="cat-results-head">
+      <p class="cat-count" role="status" aria-live="polite" data-results></p>
+      <button type="button" class="cat-clear" data-clear hidden>Clear filters</button>
+    </div>
+    <div class="cat-tools">
+      <label class="sr-only" for="cat-fabric">Filter by fabric</label>
+      <select id="cat-fabric" class="cat-select" data-fabric-filter><option value="">All fabrics</option></select>
+      <div class="cat-search">
+        <label class="sr-only" for="cat-q">Search styles</label>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <input id="cat-q" type="search" placeholder="Search styles" autocomplete="off" data-search>
+      </div>
+      <div class="cat-view" role="group" aria-label="Grid size">
+        <button type="button" class="is-active" data-view="comfy" aria-pressed="true" aria-label="Large cards"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="2" width="7" height="7" rx="1"/><rect x="11" y="2" width="7" height="7" rx="1"/><rect x="2" y="11" width="7" height="7" rx="1"/><rect x="11" y="11" width="7" height="7" rx="1"/></svg></button>
+        <button type="button" data-view="compact" aria-pressed="false" aria-label="Compact cards"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="2" width="4" height="4" rx=".6"/><rect x="8" y="2" width="4" height="4" rx=".6"/><rect x="14" y="2" width="4" height="4" rx=".6"/><rect x="2" y="8" width="4" height="4" rx=".6"/><rect x="8" y="8" width="4" height="4" rx=".6"/><rect x="14" y="8" width="4" height="4" rx=".6"/><rect x="2" y="14" width="4" height="4" rx=".6"/><rect x="8" y="14" width="4" height="4" rx=".6"/><rect x="14" y="14" width="4" height="4" rx=".6"/></svg></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ Product grid ============ -->
+<section class="cat-results" aria-label="Products">
+  <div class="container">
+    <ul class="cat-grid" data-grid></ul>
+    <div class="cat-empty" data-empty hidden>
+      <h2>No styles match these filters.</h2>
+      <p>Try another category or fabric, or tell us what you’re looking for — we develop styles to your specification.</p>
+      <div class="cat-empty-actions">
+        <button type="button" class="btn btn-outline" data-clear>Clear filters</button>
+        <a class="btn btn-primary" href="contact.html?topic=development#enquiry">Ask about a style <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Fabric library ============ -->
+<section class="fabric-lib" id="fabrics">
+  <div class="container">
+    <div class="fabric-head">
+      <div>
+        <p class="kicker">Fabric library</p>
+        <h2 class="h2 split">Fabrics we work with.</h2>
+      </div>
+      <p class="body">Examples from our catalogue. Choose one to see styles in that fabric.</p>
+    </div>
+    <ul class="fabric-list" data-fabric-list></ul>
+  </div>
+</section>
+
+<!-- ============ Note ============ -->
+<section class="cat-note">
+  <div class="container">
+    <p>Images are shown for illustration. Some models in our catalogue imagery are AI-generated, and some archive pieces may no longer be available — contact us for current samples.</p>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta" id="contact">
+  <div class="container cta-grid">
+    <div>
+      <p class="kicker kicker-light">Let’s work together</p>
+      <h2 class="cta-title split">Let’s build what’s next.</h2>
+    </div>
+    <p class="cta-note">Looking for a reliable manufacturing partner for your next collection?</p>
+    <div class="cta-actions">
+      <a class="btn btn-light" href="contact.html#enquiry">Start a conversation <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <a class="btn btn-ghost" href="contact.html?topic=quote#enquiry">Request a quote</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ Footer ============ -->
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a class="brand brand-dark" href="#top" aria-label="Caesar Apparels Limited, back to top">
+        <span class="brand-mark"><img src="assets/logo/logo.webp" alt="" width="1320" height="1095"></span>
+        <span class="brand-name">Caesar Apparels Ltd</span>
+      </a>
+      <p>A quality garments manufacturer since 2006.</p>
+      <p class="footer-motto">Value every minute.</p>
+    </div>
+    <nav class="footer-col" aria-label="Company">
+      <h3>Company</h3>
+      <ul><li><a href="about.html">About</a></li><li><a href="index.html#capabilities">What we do</a></li><li><a href="products.html">Products</a></li><li><a href="index.html#capacity">Capacity</a></li></ul>
+    </nav>
+    <nav class="footer-col" aria-label="More">
+      <h3>More</h3>
+      <ul><li><a href="index.html#sustainability">Certifications</a></li><li><a href="index.html#clients">Buyers</a></li><li><a href="index.html#reach">Markets</a></li><li><a href="contact.html">Contact</a></li></ul>
+    </nav>
+    <div class="footer-col footer-contact">
+      <h3>Contact</h3>
+      <ul class="contact-list">
+        <li><svg class="ic"><use href="#i-phone"/></svg><a href="tel:+88023344810478">+880 233 448 1047-8</a></li>
+        <li><svg class="ic"><use href="#i-phone"/></svg><a href="tel:+88023344810023">+880 233 448 1002-3</a></li>
+        <li><svg class="ic"><use href="#i-mail"/></svg><a href="mailto:info@caesargroup.com">info@caesargroup.com</a></li>
+        <li><svg class="ic"><use href="#i-mail"/></svg><a href="mailto:ceo@caesargroup.com">ceo@caesargroup.com</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-offices">
+    <address><h3>Corporate office</h3>82 Nasirabad Industrial Area,<br>Chittagong 4209, Bangladesh</address>
+    <address><h3>Factory</h3>Yakub Synthetic Fiber Building, Moijjar Tek,<br>Shikalbaha P.S: Karnafully, Upazilla: Patiya,<br>Chittagong, Bangladesh</address>
+    <address><h3>Dhaka office</h3>House 11 (10C) Sheltech Motihar,<br>Gareeb-E-Newaz Avenue, Sector 13,<br>Uttara, Dhaka 1230, Bangladesh</address>
+    <address><h3>Hong Kong office</h3>1/F Wing Wah Building,<br>No. 110 Cheung Sha Wan Road,<br>Shamshuipo, Kowloon, Hong Kong</address>
+  </div>
+
+  <div class="container footer-base">
+    <p>© <span data-year>2026</span> Caesar Apparels Limited. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3zM9.5 9.5h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.2c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21h-4z"/></svg></a>
+      <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12a31 31 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.7 15V9l5.8 3z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/></g><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ Quick view ============ -->
+<dialog class="qv" aria-labelledby="qv-title" data-qv>
+  <div class="qv-card">
+    <figure class="qv-media"><img alt="" data-qv-img></figure>
+    <div class="qv-body">
+      <p class="qv-cat" data-qv-cat></p>
+      <h2 class="qv-title" id="qv-title" data-qv-title></h2>
+      <p class="qv-text" data-qv-text></p>
+      <dl class="qv-specs">
+        <div><dt>Fabric</dt><dd data-qv-fabric></dd></div>
+        <div><dt>For</dt><dd data-qv-gender></dd></div>
+        <div><dt>Reference</dt><dd data-qv-id></dd></div>
+      </dl>
+      <p class="qv-fabric-note" data-qv-note></p>
+      <a class="btn btn-primary qv-cta" data-qv-cta href="contact.html">Enquire about this style <svg class="ic"><use href="#i-arrow"/></svg></a>
+      <div class="qv-nav">
+        <button type="button" class="round-btn" data-qv-prev aria-label="Previous style"><svg class="ic"><use href="#i-arrow-l"/></svg></button>
+        <span class="qv-pos" data-qv-pos></span>
+        <button type="button" class="round-btn" data-qv-next aria-label="Next style"><svg class="ic"><use href="#i-arrow"/></svg></button>
+      </div>
+    </div>
+    <button type="button" class="qv-close" data-qv-close aria-label="Close"><span></span><span></span></button>
+  </div>
+</dialog>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="js/common.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
+<script src="js/catalog-data.js"></script>
+<script src="js/catalog.js"></script>
+</body>
+</html>

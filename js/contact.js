@@ -21,6 +21,20 @@
     if (radio) radio.checked = true;
   }
 
+  // Coming from a certificate: ask for a copy
+  const cert = new URLSearchParams(location.search).get("cert");
+  if (cert) {
+    const msg = document.getElementById("f-message");
+    if (msg && !msg.value) msg.value = `Please share a copy of your ${cert} certificate.\n\n`;
+  }
+
+  // Coming from the catalogue: prefill the message with the chosen style
+  const style = new URLSearchParams(location.search).get("style");
+  if (style) {
+    const msg = document.getElementById("f-message");
+    if (msg && !msg.value) msg.value = `I'm interested in this style from your catalogue: ${style}.\n\n`;
+  }
+
   /* ---------- Live clocks (Bangladesh, Hong Kong) ---------- */
   const timeParts = (tz) => {
     const parts = new Intl.DateTimeFormat("en-GB", { timeZone: tz, hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }).formatToParts(new Date());
@@ -197,7 +211,7 @@
     .fromTo(".ct-char", { yPercent: 115, rotate: 10 }, { yPercent: 0, rotate: 0, duration: 1.3, stagger: 0.025 }, 0.2)
     .fromTo(".ct-lede", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 1.1 }, 0.9)
     .fromTo(".ct-quick li", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 1.1, stagger: 0.1 }, 1.05)
-    .fromTo(header, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1 }, 0.8);
+    .fromTo(header, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1, clearProps: "transform" }, 0.8);
 
   // A plane flies the route, drawing its dashed trail; then keeps flying it on a loop.
   const clipRect = $("[data-thread-clip]");

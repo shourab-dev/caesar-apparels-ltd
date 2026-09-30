@@ -35,7 +35,7 @@
     .fromTo(".ab-char", { yPercent: 110, rotate: 8 }, { yPercent: 0, rotate: 0, duration: 1.3, stagger: 0.035 }, 0.5)
     .fromTo([".ab-hero-top .kicker", ".ab-hero-lede"], { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 1, stagger: 0.1 }, 1.1)
     .fromTo(".ab-scroll-cue", { opacity: 0 }, { opacity: 1, duration: 1 }, 1.4)
-    .fromTo(header, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1 }, 1.2);
+    .fromTo(header, { opacity: 0, y: -20 }, { opacity: 1, y: 0, duration: 1, clearProps: "transform" }, 1.2);
 
   /* ---------- Hero: pinned zoom-through ---------- */
   gsap.timeline({
