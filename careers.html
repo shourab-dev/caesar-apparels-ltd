@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Product Catalogue — Caesar Apparels</title>
-  <meta name="description" content="Browse the Caesar Apparels product catalogue: ladieswear, menswear, kidswear, sportswear, activewear, loungewear and casual shirts, with the fabrics we work with.">
+  <title>Careers — Caesar Apparels</title>
+  <meta name="description" content="Careers at Caesar Apparels Limited — open roles in merchandising, sourcing, product development, quality, production and compliance in Chittagong, Dhaka and Hong Kong.">
   <link rel="icon" href="assets/logo/fab.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wdth,wght@75..100,400..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/catalog.css">
+  <link rel="stylesheet" href="css/careers.css">
   <script>document.documentElement.classList.add("js")</script>
 </head>
-<body class="page-catalog page-light">
+<body class="page-careers page-light">
 
 <!-- Icon sprite -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -51,7 +51,7 @@
       <ul>
         <li><a href="about.html">About</a></li>
         <li><a href="index.html#capabilities">Capabilities</a></li>
-        <li><a href="products.html" aria-current="page">Products</a></li>
+        <li><a href="products.html">Products</a></li>
         <li><a href="index.html#sustainability">Compliance</a></li>
       </ul>
     </nav>
@@ -70,10 +70,10 @@
     <ul>
       <li><a href="about.html">About</a></li>
       <li><a href="index.html#capabilities">Capabilities</a></li>
-      <li><a href="products.html" aria-current="page">Products</a></li>
+      <li><a href="products.html">Products</a></li>
       <li><a href="index.html#sustainability">Compliance</a></li>
       <li><a href="index.html#clients">Clients</a></li>
-      <li><a href="careers.html">Careers</a></li>
+      <li><a href="careers.html" aria-current="page">Careers</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
@@ -82,96 +82,124 @@
 
 <main id="main">
 
-<!-- ============ Catalogue header ============ -->
-<section class="cat-hero" id="top" data-intro>
-  <div class="container cat-hero-grid">
+<!-- ============ Careers hero ============ -->
+<section class="cr-hero" id="top" data-intro>
+  <div class="container cr-hero-grid">
     <div>
-      <p class="kicker">Product catalogue</p>
-      <h1 class="cat-title">Styles we make.</h1>
+      <p class="kicker cr-kicker">Careers</p>
+      <h1 class="cr-title" aria-label="Build your career with us.">
+        <span class="cr-line" aria-hidden="true">Build your career</span>
+        <span class="cr-line" aria-hidden="true">with us.</span>
+      </h1>
     </div>
-    <div class="cat-hero-side">
-      <p class="cat-lede">A selection of knit and woven styles for men, women and children. Every style can be developed in your fabric, fit and trims.</p>
-      <ul class="cat-facts" aria-label="Catalogue at a glance">
-        <li><b data-fact="styles">0</b> styles</li>
-        <li><b data-fact="categories">0</b> categories</li>
-        <li><b data-fact="fabrics">0</b> fabric families</li>
+    <div class="cr-hero-side">
+      <p class="cr-lede">Join 1,275 people making knit and woven garments for brands around the world — from our factory and offices in Chittagong, Dhaka and Hong Kong.</p>
+      <ul class="cr-facts" aria-label="Careers at a glance">
+        <li><b data-fact="roles">0</b> open roles</li>
+        <li><b data-fact="locations">0</b> locations</li>
+        <li><b>1,275</b> people</li>
       </ul>
+      <a class="btn btn-primary" href="#roles">View open roles <svg class="ic"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
 
-<!-- ============ Filter bar ============ -->
-<div class="cat-bar" data-bar>
-  <div class="container cat-bar-inner">
-    <div class="cat-chips" role="group" aria-label="Filter by category" data-chips></div>
-    <div class="cat-results-head">
-      <p class="cat-count" role="status" aria-live="polite" data-results></p>
-      <button type="button" class="cat-clear" data-clear hidden>Clear filters</button>
-    </div>
-    <div class="cat-tools">
-      <label class="sr-only" for="cat-fabric">Filter by fabric</label>
-      <select id="cat-fabric" class="cat-select" data-fabric-filter><option value="">All fabrics</option></select>
-      <div class="cat-search">
-        <label class="sr-only" for="cat-q">Search styles</label>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <input id="cat-q" type="search" placeholder="Search styles" autocomplete="off" data-search>
-      </div>
-      <div class="cat-view" role="group" aria-label="Grid size">
-        <button type="button" class="is-active" data-view="comfy" aria-pressed="true" aria-label="Large cards"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="2" width="7" height="7" rx="1"/><rect x="11" y="2" width="7" height="7" rx="1"/><rect x="2" y="11" width="7" height="7" rx="1"/><rect x="11" y="11" width="7" height="7" rx="1"/></svg></button>
-        <button type="button" data-view="compact" aria-pressed="false" aria-label="Compact cards"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="2" y="2" width="4" height="4" rx=".6"/><rect x="8" y="2" width="4" height="4" rx=".6"/><rect x="14" y="2" width="4" height="4" rx=".6"/><rect x="2" y="8" width="4" height="4" rx=".6"/><rect x="8" y="8" width="4" height="4" rx=".6"/><rect x="14" y="8" width="4" height="4" rx=".6"/><rect x="2" y="14" width="4" height="4" rx=".6"/><rect x="8" y="14" width="4" height="4" rx=".6"/><rect x="14" y="14" width="4" height="4" rx=".6"/></svg></button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ Product grid ============ -->
-<section class="cat-results" aria-label="Products">
+<!-- ============ Why Caesar ============ -->
+<section class="cr-why" aria-labelledby="why-title">
   <div class="container">
-    <ul class="cat-grid" data-grid></ul>
-    <div class="cat-empty" data-empty hidden>
-      <h2>No styles match these filters.</h2>
-      <p>Try another category or fabric, or tell us what you’re looking for — we develop styles to your specification.</p>
-      <div class="cat-empty-actions">
-        <button type="button" class="btn btn-outline" data-clear>Clear filters</button>
-        <a class="btn btn-primary" href="contact.html?topic=development#enquiry">Ask about a style <svg class="ic"><use href="#i-arrow"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ Fabric library ============ -->
-<section class="fabric-lib" id="fabrics">
-  <div class="container">
-    <div class="fabric-head">
+    <div class="cr-head">
       <div>
-        <p class="kicker">Fabric library</p>
-        <h2 class="h2 split">Fabrics we work with.</h2>
+        <p class="kicker">Why Caesar</p>
+        <h2 class="h2 split" id="why-title">Work that values every minute.</h2>
       </div>
-      <p class="body">Examples from our catalogue. Choose one to see styles in that fabric.</p>
+      <p class="body">Since 2006 we have grown by doing the work well and keeping our partners for the long term — and that starts with our people.</p>
     </div>
-    <ul class="fabric-list" data-fabric-list></ul>
+    <ul class="why-list">
+      <li class="why">
+        <span class="why-num">01</span>
+        <h3>Value every minute</h3>
+        <p>Our motto shapes the way we work: efficient, reliable and focused on doing things right the first time.</p>
+      </li>
+      <li class="why">
+        <span class="why-num">02</span>
+        <h3>Global buyers</h3>
+        <p>Work on programmes for brands across the USA, Europe, Australia and the Middle East.</p>
+      </li>
+      <li class="why">
+        <span class="why-num">03</span>
+        <h3>A compliant workplace</h3>
+        <p>Facilities certified for fire and building safety (ACCORD) and social compliance (amfori BSCI).</p>
+      </li>
+      <li class="why">
+        <span class="why-num">04</span>
+        <h3>Four locations</h3>
+        <p>Roles across our corporate office and factory in Chittagong, and our offices in Dhaka and Hong Kong.</p>
+      </li>
+    </ul>
   </div>
 </section>
 
-<!-- ============ Note ============ -->
-<section class="cat-note">
+<!-- ============ Open roles ============ -->
+<section class="cr-roles" id="roles" aria-labelledby="roles-title">
   <div class="container">
-    <p>Images are shown for illustration. Some models in our catalogue imagery are AI-generated, and some archive pieces may no longer be available — contact us for current samples.</p>
+    <div class="cr-head">
+      <div>
+        <p class="kicker">Open roles</p>
+        <h2 class="h2 split" id="roles-title">Find your role.</h2>
+      </div>
+      <p class="body">Select a role to read the details. <b>Apply now</b> opens your email app with the role already in the subject — attach your CV and send.</p>
+    </div>
+
+    <div class="cr-filters">
+      <div class="cr-chips" role="group" aria-label="Filter by department" data-dept-chips></div>
+      <div class="cr-tools">
+        <label class="sr-only" for="cr-location">Filter by location</label>
+        <select id="cr-location" class="cr-select" data-location><option value="">All locations</option></select>
+        <div class="cr-search">
+          <label class="sr-only" for="cr-q">Search roles</label>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M16 16l4.5 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <input id="cr-q" type="search" placeholder="Search roles" autocomplete="off" data-search>
+        </div>
+      </div>
+    </div>
+    <p class="cr-count" role="status" aria-live="polite" data-results></p>
+
+    <ul class="jobs" data-jobs></ul>
+
+    <div class="cr-empty" data-empty hidden>
+      <h3 data-empty-title>No roles match these filters.</h3>
+      <p>Try another department or location — or send us a general application and we’ll keep your CV on file.</p>
+      <div class="cr-empty-actions">
+        <button type="button" class="btn btn-outline" data-clear>Clear filters</button>
+        <a class="btn btn-primary" data-general href="#">Send a general application <svg class="ic"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============ CTA ============ -->
-<section class="cta" id="contact">
-  <div class="container cta-grid">
+<!-- ============ How to apply ============ -->
+<section class="cr-steps" aria-labelledby="steps-title">
+  <div class="container cr-steps-grid">
     <div>
-      <p class="kicker kicker-light">Let’s work together</p>
-      <h2 class="cta-title split">Let’s build what’s next.</h2>
+      <p class="kicker kicker-light">How to apply</p>
+      <h2 class="h2 split" id="steps-title">Three simple steps.</h2>
     </div>
-    <p class="cta-note">Looking for a reliable manufacturing partner for your next collection?</p>
-    <div class="cta-actions">
-      <a class="btn btn-light" href="contact.html#enquiry">Start a conversation <svg class="ic"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn-ghost" href="contact.html?topic=quote#enquiry">Request a quote</a>
+    <ol class="steps-list">
+      <li><span class="steps-num">01</span><h3>Choose a role</h3><p>Open a role above and check the responsibilities and requirements.</p></li>
+      <li><span class="steps-num">02</span><h3>Email your CV</h3><p><b>Apply now</b> opens an email with the role reference filled in. Attach your CV and send it.</p></li>
+      <li><span class="steps-num">03</span><h3>Hear from us</h3><p>Our team reviews every application and contacts shortlisted candidates for an interview.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ General application ============ -->
+<section class="cr-general">
+  <div class="container cr-general-inner">
+    <div>
+      <h2 class="cr-general-title split">Don’t see your role?</h2>
+      <p class="body">We’re always glad to meet good people. Send your CV and tell us what you’d like to do.</p>
     </div>
+    <a class="btn btn-primary" data-general href="#">Send a general application <svg class="ic"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
 
@@ -194,7 +222,7 @@
     </nav>
     <nav class="footer-col" aria-label="More">
       <h3>More</h3>
-      <ul><li><a href="index.html#sustainability">Certifications</a></li><li><a href="index.html#clients">Buyers</a></li><li><a href="index.html#reach">Markets</a></li><li><a href="careers.html">Careers</a></li><li><a href="contact.html">Contact</a></li></ul>
+      <ul><li><a href="index.html#sustainability">Certifications</a></li><li><a href="index.html#clients">Buyers</a></li><li><a href="index.html#reach">Markets</a></li><li><a href="careers.html" aria-current="page">Careers</a></li><li><a href="contact.html">Contact</a></li></ul>
     </nav>
     <div class="footer-col footer-contact">
       <h3>Contact</h3>
@@ -224,30 +252,6 @@
   </div>
 </footer>
 
-<!-- ============ Quick view ============ -->
-<dialog class="qv" aria-labelledby="qv-title" data-qv>
-  <div class="qv-card">
-    <figure class="qv-media"><img alt="" data-qv-img></figure>
-    <div class="qv-body">
-      <p class="qv-cat" data-qv-cat></p>
-      <h2 class="qv-title" id="qv-title" data-qv-title></h2>
-      <p class="qv-text" data-qv-text></p>
-      <dl class="qv-specs">
-        <div><dt>Fabric</dt><dd data-qv-fabric></dd></div>
-        <div><dt>For</dt><dd data-qv-gender></dd></div>
-        <div><dt>Reference</dt><dd data-qv-id></dd></div>
-      </dl>
-      <p class="qv-fabric-note" data-qv-note></p>
-      <a class="btn btn-primary qv-cta" data-qv-cta href="contact.html">Enquire about this style <svg class="ic"><use href="#i-arrow"/></svg></a>
-      <div class="qv-nav">
-        <button type="button" class="round-btn" data-qv-prev aria-label="Previous style"><svg class="ic"><use href="#i-arrow-l"/></svg></button>
-        <span class="qv-pos" data-qv-pos></span>
-        <button type="button" class="round-btn" data-qv-next aria-label="Next style"><svg class="ic"><use href="#i-arrow"/></svg></button>
-      </div>
-    </div>
-    <button type="button" class="qv-close" data-qv-close aria-label="Close"><span></span><span></span></button>
-  </div>
-</dialog>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -255,7 +259,7 @@
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
 <script src="js/common.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/Flip.min.js"></script>
-<script src="js/catalog-data.js"></script>
-<script src="js/catalog.js"></script>
+<script src="js/careers-data.js"></script>
+<script src="js/careers.js"></script>
 </body>
 </html>
